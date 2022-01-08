@@ -45,10 +45,10 @@ jobs:
         run: composer self-update
 
       - name: Install dependencies
-        run: composer update --prefer-dist --no-interaction --no-progress --optimize-autoloader --ansi
+        run: composer install --prefer-dist --no-interaction --no-progress --optimize-autoloader --ansi
 
       - name: Install specific Yii version
-        run: "composer require yiisoft/yii2:${{ matrix.yii }} && composer show -D"
+        run: "composer require -w yiisoft/yii2:${{ matrix.yii }} && composer show -D"
 
       - name: Setup source database
         run: |
