@@ -50,22 +50,22 @@ jobs:
       - name: Install specific Yii version
         run: composer require -w --no-progress --ansi yiisoft/yii2:${{ matrix.yii }}
 
-      - name: Setup source database
-        run: |
-          sudo /etc/init.d/mysql start
-          mysql -uroot -proot -e 'CREATE DATABASE `yiitest`;'
-          mysql -D yiitest -uroot -proot < tests/data/source.sql
+#      - name: Setup source database
+#        run: |
+#          sudo /etc/init.d/mysql start
+#          mysql -uroot -proot -e 'CREATE DATABASE `yiitest`;'
+#          mysql -D yiitest -uroot -proot < tests/data/source.sql
 
-      - name: Run tests with phpunit
-        if: matrix.php != '8.0'
-        run: vendor/bin/phpunit --colors=always
-
-      - name: Run tests with phpunit
-        if: matrix.php == '8.0'
-        run: vendor/bin/phpunit --coverage-clover=clover.xml --colors=always
-
-      - name: Upload code coverage scrutinizer
-        if: matrix.php == '8.0'
-        run: |
-          wget https://scrutinizer-ci.com/ocular.phar
-          php ocular.phar code-coverage:upload --format=php-clover coverage.clover
+#      - name: Run tests with phpunit
+#        if: matrix.php != '8.0'
+#        run: vendor/bin/phpunit --colors=always
+#
+#      - name: Run tests with phpunit
+#        if: matrix.php == '8.0'
+#        run: vendor/bin/phpunit --coverage-clover=clover.xml --colors=always
+#
+#      - name: Upload code coverage scrutinizer
+#        if: matrix.php == '8.0'
+#        run: |
+#          wget https://scrutinizer-ci.com/ocular.phar
+#          php ocular.phar code-coverage:upload --format=php-clover coverage.clover
