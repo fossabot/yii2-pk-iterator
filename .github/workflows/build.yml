@@ -6,7 +6,7 @@ name: build
 
 jobs:
   tests:
-    name: PHP ${{ matrix.php }}-${{ matrix.os }} Yii2 ${{ matrix.yii }}
+    name: Testing. PHP ${{ matrix.php }}. OS ${{ matrix.os }}. Yii2 ${{ matrix.yii }}
 
     env:
       extensions: pdo, pdo_mysql
