@@ -59,6 +59,10 @@ jobs:
       - name: Install specific Yii version
         run: composer require -w --no-progress --ansi yiisoft/yii2:${{ matrix.yii }}
 
+      - name: Run Psalm
+        if: matrix.php == '8.0'
+        run: vendor/bin/psalm --output-format=github
+
 #      - name: Setup source database
 #        run: |
 #          sudo /etc/init.d/mysql start
