@@ -19,12 +19,10 @@ jobs:
         os:
           - "ubuntu-18.04"
           - "ubuntu-20.04"
-
         php:
           - "7.3"
           - "7.4"
           - "8.0"
-          - "8.1"
         yii:
           - "2.0.27"
           - "2.0.32"
@@ -48,11 +46,10 @@ jobs:
 
       - name: Install dependencies with composer php < 8.0
         if: matrix.php != '8.0'
-        run: composer update --prefer-dist --no-interaction --no-progress --optimize-autoloader --ansi
+        run: composer update --prefer-dist --no-interaction --no-suggest --no-progress --optimize-autoloader --ansi
 
-      - name: Install dependencies with composer php 8.0
-        if: matrix.php == '8.0'
-        run: composer update --ignore-platform-reqs --prefer-dist --no-interaction --no-progress --optimize-autoloader --ansi
+      - name: Install specific Yii version
+        run: "composer require yiisoft/yii2:${{ matrix.yii }} && composer show -D"
 
       - name: Setup source database
         run: |
@@ -60,19 +57,16 @@ jobs:
           mysql -uroot -proot -e 'CREATE DATABASE `yiitest`;'
           mysql -D yiitest -uroot -proot < tests/data/source.sql
 
-      - name: Install sphinx
-        run: cd tests/data/actions && sh sphinx-setup.sh
-
       - name: Run tests with phpunit
-        if: matrix.php != '7.4'
+        if: matrix.php != '8.0'
         run: vendor/bin/phpunit --colors=always
 
       - name: Run tests with phpunit
-        if: matrix.php == '7.4'
+        if: matrix.php == '8.0'
         run: vendor/bin/phpunit --coverage-clover=clover.xml --colors=always
 
       - name: Upload code coverage scrutinizer
-        if: matrix.php == '8.1'
+        if: matrix.php == '8.0'
         run: |
           wget https://scrutinizer-ci.com/ocular.phar
           php ocular.phar code-coverage:upload --format=php-clover coverage.clover
