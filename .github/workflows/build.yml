@@ -19,6 +19,7 @@ jobs:
         os:
           - "ubuntu-18.04"
           - "ubuntu-20.04"
+          - "macos-latest"
         php:
           - "7.3"
           - "7.4"
