@@ -25,6 +25,11 @@ plugins:
     config:
       file_extensions:
         - php
+  phpmd:
+    enabled: true
+    config:
+      file_extensions: "php"
+      rulesets: "codesize,naming,design"
 
 exclude_patterns:
     - "tests/"
