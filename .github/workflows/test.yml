@@ -57,7 +57,7 @@ jobs:
           composer require --prefer-dist --no-interaction --no-progress --optimize-autoloader --ansi yiisoft/yii2:${{ matrix.yii }}
 
       - name: Run Psalm
-        run: vendor/bin/psalm --output-format=github
+        run: vendor/bin/psalm --php-version=${{ matrix.php }} --output-format=github
 
       - name: Run PHPUnit
         run: vendor/bin/phpunit --coverage-clover=coverage.xml
