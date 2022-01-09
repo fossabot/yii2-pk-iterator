@@ -52,7 +52,9 @@ jobs:
 
       - name: Install specific Yii version
         if: ${{ matrix.yii != 'current' }}
-        run: composer require -W --prefer-dist --no-interaction --no-progress --optimize-autoloader --ansi yiisoft/yii2:${{ matrix.yii }}
+        run: |
+          composer remove yiisoft/yii2
+          composer require --prefer-dist --no-interaction --no-progress --optimize-autoloader --ansi yiisoft/yii2:${{ matrix.yii }}
 
       - name: Run Psalm
         run: vendor/bin/psalm --output-format=github
