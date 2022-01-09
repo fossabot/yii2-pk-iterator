@@ -47,9 +47,6 @@ jobs:
           cp phpunit.dist.xml phpunit.xml
           cp psalm.dist.xml psalm.xml
 
-      - name: Update composer
-        run: composer self-update && composer diagnose
-
       - name: Install dependencies
         run: composer update --prefer-dist --no-interaction --no-progress --optimize-autoloader --ansi
 
@@ -58,6 +55,9 @@ jobs:
 
       - name: Run Psalm
         run: vendor/bin/psalm --output-format=github
+
+      - name: Run PHPUnit
+        run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
       - uses: codecov/codecov-action@v2
         with:
