@@ -73,10 +73,11 @@ jobs:
       - name: Setup source database
         run: |
           sudo /etc/init.d/mysql start
-          mysql -uroot -proot -e 'CREATE DATABASE `test`;'
-          mysql -D test -uroot -proot < tests/data/01-tables.sql
-          for i in {1..20000}; do mysql -D test -uroot -proot < tests/data/02-fill-normal.sql; done
-          mysql -D test -uroot -proot < tests/data/03-copy.sql
+          mysql_config_editor set --login-path=local --host=localhost --user=root --password=root
+          mysql --login-path=local -e 'CREATE DATABASE `test`;'
+          mysql -D test --login-path=local < tests/data/01-tables.sql
+          for i in {1..20000}; do mysql -D test --login-path=local < tests/data/02-fill-normal.sql; done
+          mysql -D test --login-path=local < tests/data/03-copy.sql
 
 #      - name: Run tests with phpunit
 #        if: matrix.php != '8.0'
