@@ -1,0 +1,31 @@
+version: "2"
+plugins:
+  fixme:
+    issue_override:
+      severity: info
+    enabled: true
+
+  git-legal:
+    enabled: true
+    allow_affero_copyleft: false
+    allow_strong_copyleft: false
+
+  editorconfig:
+    enabled: true
+    config:
+      editorconfig: .editorconfig
+
+  markdownlint:
+    issue_override:
+      severity: info
+    enabled: true
+
+  sonar-php:
+    enabled: true
+    config:
+      file_extensions:
+        - php
+
+exclude_patterns:
+    - "tests/"
+    - "vendor/"
