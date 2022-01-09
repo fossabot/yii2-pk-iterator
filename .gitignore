@@ -1,3 +1,6 @@
+# Psalm
+/psalm.xml
+
 # PHPUnit
 /.phpunit.result.cache
 /phpunit.xml
