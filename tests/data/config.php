@@ -11,7 +11,7 @@ $config = [
         'dsn' => 'mysql:host=127.0.0.1;dbname=yiitest',
         'username' => 'root',
         'password' => 'root',
-        'fixture' => __DIR__ . '/source.sql',
+        'fixture' => __DIR__ . '/02-fill-normal.sql',
     ],
 ];
 

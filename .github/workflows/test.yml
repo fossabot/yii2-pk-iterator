@@ -74,7 +74,9 @@ jobs:
         run: |
           sudo /etc/init.d/mysql start
           mysql -uroot -proot -e 'CREATE DATABASE `test`;'
-          mysql -D test -uroot -proot < tests/data/source.sql
+          mysql -D test -uroot -proot < tests/data/01-tables.sql
+          for i in {1..20000}; do mysql -D test -uroot -proot < tests/data/02-fill-normal.sql; done
+          mysql -D test -uroot -proot < tests/data/03-copy.sql
 
 #      - name: Run tests with phpunit
 #        if: matrix.php != '8.0'
@@ -83,9 +85,3 @@ jobs:
 #      - name: Run tests with phpunit
 #        if: matrix.php == '8.0'
 #        run: vendor/bin/phpunit --coverage-clover=clover.xml --colors=always
-#
-#      - name: Upload code coverage scrutinizer
-#        if: matrix.php == '8.0'
-#        run: |
-#          wget https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
-#          php ocular.phar code-coverage:upload --format=php-clover coverage.clover
