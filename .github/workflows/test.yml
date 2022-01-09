@@ -42,6 +42,11 @@ jobs:
           coverage: pcov
           tools: composer:v2
 
+      - name: Prepare files
+        run: |
+          cp phpunit.dist.xml phpunit.xml
+          cp psalm.dist.xml psalm.xml
+
       - name: Update composer
         run: composer self-update && composer diagnose
 
