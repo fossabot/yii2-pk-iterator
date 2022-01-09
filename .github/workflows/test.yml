@@ -80,5 +80,5 @@ jobs:
 #      - name: Upload code coverage scrutinizer
 #        if: matrix.php == '8.0'
 #        run: |
-#          wget https://scrutinizer-ci.com/ocular.phar
+#          wget https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
 #          php ocular.phar code-coverage:upload --format=php-clover coverage.clover
