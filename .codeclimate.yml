@@ -29,3 +29,4 @@ plugins:
 exclude_patterns:
     - "tests/"
     - "vendor/"
+    - ".idea/"
