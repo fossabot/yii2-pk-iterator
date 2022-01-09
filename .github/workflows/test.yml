@@ -52,7 +52,6 @@ jobs:
         run: composer require -W --prefer-dist --no-interaction --no-progress --optimize-autoloader --ansi yiisoft/yii2:${{ matrix.yii }}
 
       - name: Run Psalm
-        if: matrix.php == '8.0' && matrix.os == '
         run: vendor/bin/psalm --output-format=github
 
       - uses: codecov/codecov-action@v2
