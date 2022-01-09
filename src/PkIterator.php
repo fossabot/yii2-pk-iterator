@@ -6,10 +6,10 @@ use yii\db\BatchQueryResult;
 use yii\db\Query;
 
 /**
- * @property string pkName
- * @property int min
- * @property int max
- * @property int next
+ * @property string $pkName
+ * @property int $min
+ * @property int $max
+ * @property int $next
  */
 class PkIterator extends BatchQueryResult
 {
@@ -28,14 +28,12 @@ class PkIterator extends BatchQueryResult
     {
         parent::reset();
 
-        $this->next = null;
+        $this->_next = null;
     }
 
-    /**
-     * @return array
-     */
-    protected function fetchData()
+    protected function fetchData(): array
     {
+        /** @var \yii\db\ActiveRecord[] $result */
         $result = $this->prepareQuery()->all();
 
         $this->isValid = (
@@ -56,14 +54,13 @@ class PkIterator extends BatchQueryResult
     protected function prepareQuery(): Query
     {
         $query = clone $this->query;
-        $query
-            ->limit(null)
-            ->offset(null)
-            ->andWhere([
-                'and',
-                ['between', $this->pkName, $this->next, ($this->next + $this->batchSize)],
-                ['between', $this->pkName, $this->min, $this->max],
-            ]);
+        $query->limit(null);
+        $query->offset(null);
+        $query->andWhere([
+            'and',
+            ['between', $this->pkName, $this->next, ($this->next + $this->batchSize)],
+            ['between', $this->pkName, $this->min, $this->max],
+        ]);
 
         return $query;
     }
@@ -91,7 +88,7 @@ class PkIterator extends BatchQueryResult
             return $this->_max;
         }
 
-        return $this->_max = (int)$this->query->max($this->pkName) ?? 0;
+        return $this->_max = (int)($this->query->max($this->pkName) ?? 0);
     }
 
     public function setMax(?int $value): self
@@ -106,7 +103,7 @@ class PkIterator extends BatchQueryResult
             return $this->_min;
         }
 
-        return $this->_min = (int)$this->query->min($this->pkName) ?? 0;
+        return $this->_min = (int)($this->query->min($this->pkName) ?? 0);
     }
 
     public function setMin(?int $value): self

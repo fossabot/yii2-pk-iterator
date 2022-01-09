@@ -70,11 +70,11 @@ jobs:
           fail_ci_if_error: false
           verbose: true
 
-#      - name: Setup source database
-#        run: |
-#          sudo /etc/init.d/mysql start
-#          mysql -uroot -proot -e 'CREATE DATABASE `test`;'
-#          mysql -D yiitest -uroot -proot < tests/data/source.sql
+      - name: Setup source database
+        run: |
+          sudo /etc/init.d/mysql start
+          mysql -uroot -proot -e 'CREATE DATABASE `test`;'
+          mysql -D test -uroot -proot < tests/data/source.sql
 
 #      - name: Run tests with phpunit
 #        if: matrix.php != '8.0'

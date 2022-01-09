@@ -2,8 +2,8 @@
 
 namespace Altenar\Yii2\Db\PkIterator\Tests;
 
+use yii\console\Application;
 use yii\helpers\ArrayHelper;
-use Yii;
 
 class TestCase extends \PHPUnit\Framework\TestCase
 {
@@ -13,7 +13,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
      * @var array Database connection configuration.
      */
     protected $dbConfig = [
-        'dsn' => 'mysql:host=127.0.0.1;',
+        'dsn'      => 'mysql:host=127.0.0.1;',
         'username' => '',
         'password' => '',
     ];
@@ -22,22 +22,17 @@ class TestCase extends \PHPUnit\Framework\TestCase
      */
     protected $db;
 
-    protected function setUp():void
+    protected function setUp(): void
     {
         parent::setUp();
 
-        $this->sphinxConfig = self::getParam('sphinx');
         $this->dbConfig = self::getParam('db');
 
-        $this->assertTrue(extension_loaded('pdo') && extension_loaded('pdo_mysql'), 'pdo and pdo_mysql extension are required.');
+        $this->assertTrue(
+            extension_loaded('pdo') && extension_loaded('pdo_mysql'),
+            'pdo and pdo_mysql extension are required.'
+        );
 
-        // check whether sphinx is running
-        if (preg_match('/host=([\w.]+)/i', $this->sphinxConfig['dsn'], $hm) && preg_match('/port=(\d+)/i', $this->sphinxConfig['dsn'], $pm)) {
-            $this->assertNotFalse(
-                @stream_socket_client($hm[1] . ':' . $pm[1], $errorNumber, $errorDescription, 0.5),
-                'No Sphinx searchd running at ' . $hm[1] . ':' . $pm[1] . ' : ' . $errorNumber . ' - ' . $errorDescription
-            );
-        }
         $this->mockApplication();
     }
 
@@ -48,8 +43,10 @@ class TestCase extends \PHPUnit\Framework\TestCase
 
     /**
      * Returns a test configuration param from /data/config.php
-     * @param  string $name params name
-     * @param  mixed $default default value to use when param is not set.
+     *
+     * @param string $name   params name
+     * @param mixed $default default value to use when param is not set.
+     *
      * @return mixed  the value of the configuration param
      */
     public static function getParam($name, $default = null)
@@ -64,16 +61,19 @@ class TestCase extends \PHPUnit\Framework\TestCase
     /**
      * Populates Yii::$app with a new application
      * The application will be destroyed on tearDown() automatically.
-     * @param array $config The application configuration, if needed
+     *
+     * @param array $config    The application configuration, if needed
      * @param string $appClass name of the application class to create
      */
-    protected function mockApplication($config = [], $appClass = '\yii\console\Application')
+    protected function mockApplication($config = [], $appClass = Application::class)
     {
-        new $appClass(ArrayHelper::merge([
-            'id' => 'testapp',
-            'basePath' => __DIR__,
-            'vendorPath' => $this->getVendorPath(),
-        ], $config));
+        new $appClass(
+            ArrayHelper::merge([
+                'id'         => 'testapp',
+                'basePath'   => __DIR__,
+                'vendorPath' => $this->getVendorPath(),
+            ], $config)
+        );
     }
 
     protected function getVendorPath()
@@ -95,34 +95,8 @@ class TestCase extends \PHPUnit\Framework\TestCase
 
     /**
      * @param bool $reset whether to clean up the test database
-     * @param bool $open whether to open test database
-     * @return \yii\sphinx\Connection
-     */
-    public function getConnection($reset = false, $open = true)
-    {
-        if (!$reset && $this->sphinx) {
-            return $this->sphinx;
-        }
-        $db = new Connection;
-        $db->dsn = $this->sphinxConfig['dsn'];
-        if (isset($this->sphinxConfig['username'])) {
-            $db->username = $this->sphinxConfig['username'];
-            $db->password = $this->sphinxConfig['password'];
-        }
-        if (isset($this->sphinxConfig['attributes'])) {
-            $db->attributes = $this->sphinxConfig['attributes'];
-        }
-        if ($open) {
-            $db->open();
-        }
-        $this->sphinx = $db;
-
-        return $db;
-    }
-
-    /**
-     * @param bool $reset whether to clean up the test database
-     * @param bool $open whether to open and populate test database
+     * @param bool $open  whether to open and populate test database
+     *
      * @return \yii\db\Connection
      */
     public function getDbConnection($reset = true, $open = true)
