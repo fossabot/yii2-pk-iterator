@@ -59,9 +59,6 @@ jobs:
       - name: Run Psalm
         run: vendor/bin/psalm --php-version=${{ matrix.php }} --output-format=github
 
-      - name: Run PHPUnit
-        run: vendor/bin/phpunit --coverage-clover=coverage.xml
-
       - name: Setup source database
         env:
           MYSQL_PWD: root
