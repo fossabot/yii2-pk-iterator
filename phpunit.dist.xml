@@ -16,5 +16,8 @@
         <include>
             <directory suffix=".php">./src</directory>
         </include>
+        <report>
+            <clover outputFile="./tests/runtime/coverage-clover.xml"/>
+        </report>
     </coverage>
 </phpunit>

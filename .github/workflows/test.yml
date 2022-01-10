@@ -71,11 +71,11 @@ jobs:
           mysql -D test -uroot < tests/data/03-copy.sql
 
       - name: PHPUnit
-        run: vendor/bin/phpunit --coverage-clover=./tests/runtime/coverage-clover.xml --colors=always
+        run: vendor/bin/phpunit --colors=always
 
       - uses: codecov/codecov-action@v2
         with:
-          files: ./clover.xml
+          files: ./runtime/coverage-clover.xml
           flags: unit
           env_vars: OS, PHP, YII
           fail_ci_if_error: false
