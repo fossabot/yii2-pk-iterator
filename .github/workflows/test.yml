@@ -26,7 +26,6 @@ jobs:
           - "current"
 
     env:
-      OS: ${{ matrix.os }}
       php: ${{ matrix.php }}
       extensions: pdo, pdo_mysql
 
@@ -74,9 +73,9 @@ jobs:
         run: vendor/bin/phpunit --colors=always
 
       - uses: codecov/codecov-action@v2
+        if: ${{ matrix.php == '8.1' && matrix.os == 'ubuntu-latest' && matrix.yii == 'current' }}
         with:
           files: ./tests/runtime/coverage-clover.xml
           flags: unit
-          env_vars: OS, PHP, YII
-          fail_ci_if_error: false
+          fail_ci_if_error: true
           verbose: true
