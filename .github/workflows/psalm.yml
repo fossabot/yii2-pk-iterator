@@ -9,7 +9,6 @@ jobs:
     name: Analyzing codebase with Psalm
     runs-on: "ubuntu-latest"
     env:
-      php: '7.3'
       extensions: pdo, pdo_mysql
     steps:
       - name: Checkout
@@ -18,7 +17,7 @@ jobs:
       - name: Install PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php }}
+          php-version: "latest"
           extensions: ${{ env.extensions }}
           ini-values: date.timezone='UTC'
           coverage: none
