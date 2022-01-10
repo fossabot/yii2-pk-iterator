@@ -2,7 +2,7 @@ on:
   - pull_request
   - push
 
-name: Psalm
+name: Analysis
 
 jobs:
   analysis:
