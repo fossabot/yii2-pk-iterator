@@ -157,6 +157,7 @@ class PkIterator extends BatchQueryResult
             throw new PkIteratorException('This iterator can work only with single-pk tables');
         }
 
+        /** @psalm-suppress DocblockTypeContradiction In older versions Yii(ex. 2.0.27) there is a mistake in PHPDoc */
         if (!$column = $table->getColumn(reset($primary_key))) {
             throw new PkIteratorException('Column marked as primary key not exists in target table');
         }
