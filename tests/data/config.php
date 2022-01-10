@@ -8,10 +8,10 @@
 
 $config = [
     'db' => [
-        'dsn' => 'mysql:host=127.0.0.1;dbname=yiitest',
+        'class'    => \yii\db\Connection::class,
+        'dsn'      => 'mysql:host=127.0.0.1;dbname=test',
         'username' => 'root',
         'password' => 'root',
-        'fixture' => __DIR__ . '/02-fill-normal.sql',
     ],
 ];
 

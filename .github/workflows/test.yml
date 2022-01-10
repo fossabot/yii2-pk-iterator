@@ -62,14 +62,6 @@ jobs:
       - name: Run PHPUnit
         run: vendor/bin/phpunit --coverage-clover=coverage.xml
 
-      - uses: codecov/codecov-action@v2
-        with:
-          files: ./coverage.xml
-          flags: unit
-          env_vars: OS,PHP,YII
-          fail_ci_if_error: false
-          verbose: true
-
       - name: Setup source database
         env:
           MYSQL_PWD: root
@@ -80,10 +72,18 @@ jobs:
           for i in {1..5000}; do mysql -D test -uroot < tests/data/02-fill-normal.sql; done
           mysql -D test -uroot < tests/data/03-copy.sql
 
-#      - name: Run tests with phpunit
+#      - name: PHPUnit
 #        if: matrix.php != '8.0'
 #        run: vendor/bin/phpunit --colors=always
-#
-#      - name: Run tests with phpunit
+
+      - name: PHPUnit
 #        if: matrix.php == '8.0'
-#        run: vendor/bin/phpunit --coverage-clover=clover.xml --colors=always
+        run: vendor/bin/phpunit --coverage-clover=./tests/runtime/coverage-clover.xml --colors=always
+
+      - uses: codecov/codecov-action@v2
+        with:
+          files: ./clover.xml
+          flags: unit
+          env_vars: OS, PHP, YII
+          fail_ci_if_error: false
+          verbose: true
