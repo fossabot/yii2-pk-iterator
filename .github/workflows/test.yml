@@ -75,7 +75,7 @@ jobs:
 
       - uses: codecov/codecov-action@v2
         with:
-          files: ./runtime/coverage-clover.xml
+          files: ./tests/runtime/coverage-clover.xml
           flags: unit
           env_vars: OS, PHP, YII
           fail_ci_if_error: false
