@@ -1,5 +1,5 @@
 {
-    "name": "altenar/yii2-pk-iterator",
+    "name": "serhioli/yii2-pk-iterator",
     "description": "BatchQueryResult based on iterating via ids range in query result set",
     "license": "MIT",
     "authors": [
@@ -31,8 +31,8 @@
     },
     "autoload": {
         "psr-4": {
-            "Altenar\\Yii2\\Db\\PkIterator\\": "src/",
-            "Altenar\\Yii2\\Db\\PkIterator\\Tests\\": "tests/"
+            "serhioli\\Yii2\\Db\\PkIterator\\": "src/",
+            "serhioli\\Yii2\\Db\\PkIterator\\Tests\\": "tests/"
         }
     },
     "repositories": [

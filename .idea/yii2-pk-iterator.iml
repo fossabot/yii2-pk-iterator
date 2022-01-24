@@ -3,8 +3,8 @@
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" packagePrefix="Altenar\Yii2\Db\PkIterator\" />
-      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="false" packagePrefix="Altenar\Yii2\Db\PkIterator\Tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" packagePrefix="serhioli\Yii2\Db\PkIterator\" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="false" packagePrefix="serhioli\Yii2\Db\PkIterator\Tests\" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/yiisoft/yii2-composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/yiisoft/yii2" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/symfony/polyfill-intl-grapheme" />

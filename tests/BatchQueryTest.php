@@ -1,8 +1,8 @@
 <?php
 
-namespace Altenar\Yii2\Db\PkIterator\Tests;
+namespace serhioli\Yii2\Db\PkIterator\Tests;
 
-use Altenar\Yii2\Db\PkIterator\Tests\data\models\CommonModel;
+use serhioli\Yii2\Db\PkIterator\Tests\data\models\CommonModel;
 
 class BatchQueryTest extends TestCase
 {
@@ -28,8 +28,7 @@ class BatchQueryTest extends TestCase
 
     public function testAllDataset()
     {
-        $query = CommonModel::testFind()
-            ->indexBy('id_1');
+        $query = CommonModel::testFind()->indexBy('id_1');
 
         $data = [];
         $counter = CommonModel::vendorFind()->min('id_1');

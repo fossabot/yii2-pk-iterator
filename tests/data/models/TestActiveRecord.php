@@ -1,6 +1,6 @@
 <?php
 
-namespace Altenar\Yii2\Db\PkIterator\Tests\data\models;
+namespace serhioli\Yii2\Db\PkIterator\Tests\data\models;
 
 use Yii;
 use yii\db\ActiveRecord;

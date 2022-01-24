@@ -1,6 +1,6 @@
 <?php
 
-namespace Altenar\Yii2\Db\PkIterator\exceptions;
+namespace serhioli\Yii2\Db\PkIterator\exceptions;
 
 use yii\db\Exception;
 

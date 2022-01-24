@@ -1,8 +1,8 @@
 <?php
 
-namespace Altenar\Yii2\Db\PkIterator\Tests\data\models;
+namespace serhioli\Yii2\Db\PkIterator\Tests\data\models;
 
-use Altenar\Yii2\Db\PkIterator\PkIterator;
+use serhioli\Yii2\Db\PkIterator\PkIterator;
 use Yii;
 
 class TestActiveQuery extends \yii\db\ActiveQuery

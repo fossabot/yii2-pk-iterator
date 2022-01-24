@@ -1,6 +1,6 @@
 <?php
 
-namespace Altenar\Yii2\Db\PkIterator\Tests;
+namespace serhioli\Yii2\Db\PkIterator\Tests;
 
 use yii\console\Application;
 use yii\helpers\ArrayHelper;

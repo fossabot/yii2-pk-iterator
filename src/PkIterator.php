@@ -1,8 +1,8 @@
 <?php
 
-namespace Altenar\Yii2\Db\PkIterator;
+namespace serhioli\Yii2\Db\PkIterator;
 
-use Altenar\Yii2\Db\PkIterator\exceptions\PkIteratorException;
+use serhioli\Yii2\Db\PkIterator\exceptions\PkIteratorException;
 use yii\db\ActiveQueryInterface;
 use yii\db\BatchQueryResult;
 use yii\db\ColumnSchema;
