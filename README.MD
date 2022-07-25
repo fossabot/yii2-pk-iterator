@@ -1,6 +1,7 @@
 # Yii2 Primary Key Iterator
 
 [![codecov](https://codecov.io/gh/serhioli/yii2-pk-iterator/branch/main/graph/badge.svg?token=BB5VQ7DZBY)](https://codecov.io/gh/serhioli/yii2-pk-iterator)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Faccuracode%2Fyii2-pk-iterator.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Faccuracode%2Fyii2-pk-iterator?ref=badge_shield)
 
 ---
 
@@ -39,3 +40,7 @@ where
 - Besides that component is pretty simple and tested, you still need to keep in mind some edge cases:
   - Grouping queries aren't working with this algorithm
   - You may expi
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Faccuracode%2Fyii2-pk-iterator.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Faccuracode%2Fyii2-pk-iterator?ref=badge_large)
